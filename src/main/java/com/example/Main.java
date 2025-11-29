@@ -9,7 +9,7 @@ public class Main {
     public static void main(String [] args) {
 
     ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-    HelloService service = context.getBean(HelloService.class);
+    GreetingService service = context.getBean(GreetingService.class);
     service.greet();
     }
 }

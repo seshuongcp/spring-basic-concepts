@@ -10,7 +10,16 @@ public class AppConfig {
 
     @Bean
     HelloService helloService() {
-
         return new HelloService();
+    }
+
+    @Bean
+    GreetingRepository getGreetingRepository(){
+        return new GreetingRepository();
+    }
+
+    @Bean
+    GreetingService getGreetingService(GreetingRepository repository){
+        return new GreetingService(repository);
     }
 }
