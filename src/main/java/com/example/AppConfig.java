@@ -1,10 +1,10 @@
 package com.example;
 
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Conditional;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.*;
+import org.springframework.core.annotation.Order;
 
 @Configuration
 public class AppConfig {
@@ -39,8 +39,33 @@ public class AppConfig {
         return new UserService();
     }
 
-    @Bean
+    @Bean()
     public UserRepository userRepository() {
         return new UserRepository();
+    }
+
+    @Bean
+    public OrderService getOrderService() {
+        return new OrderService();
+    }
+
+    @Bean
+    public OrderRepository getOrderRepository() {
+        return new OrderRepository();
+    }
+
+    @Bean
+    public CreditCardPaymentService getCreateCardPaymentService() {
+        return new CreditCardPaymentService();
+    }
+
+    @Bean
+    public UPIPaymentService getUPIPaymentService() {
+        return new UPIPaymentService();
+    }
+
+    @Bean
+    public CheckoutService getCheckOutService(@Qualifier("getCreateCardPaymentService") PaymentService paymentService) {
+        return new CheckoutService(paymentService);
     }
 }

@@ -9,7 +9,7 @@ public class Main {
     public static void main(String [] args) {
 
     ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-    UserService service = context.getBean(UserService.class);
-    service.getUserName();
+    CheckoutService service = context.getBean(CheckoutService.class);
+    service.processOrder();
     }
 }
