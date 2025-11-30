@@ -15,12 +15,12 @@ public class AppConfig {
     }
 
     @Bean
-    GreetingRepository getGreetingRepository(){
+    GreetingRepository getGreetingRepository() {
         return new GreetingRepository();
     }
 
     @Bean
-    GreetingService getGreetingService(GreetingRepository repository){
+    GreetingService getGreetingService(GreetingRepository repository) {
         return new GreetingService(repository);
     }
 
@@ -30,7 +30,17 @@ public class AppConfig {
     }*/
 
     @Bean
-    MultiConstructorService getMultiConstructorService(){
+    MultiConstructorService getMultiConstructorService() {
         return new MultiConstructorService();
+    }
+
+    @Bean
+    UserService getUserService() {
+        return new UserService();
+    }
+
+    @Bean
+    public UserRepository userRepository() {
+        return new UserRepository();
     }
 }
