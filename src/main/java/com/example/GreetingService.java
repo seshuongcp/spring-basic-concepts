@@ -8,8 +8,6 @@ public class GreetingService {
         System.out.println("GreetingService: Constructor called");
         this.greetingRepository= greetingRepository;
     }
-
-
     String greet(){
         return greetingRepository.getGreetingMessage();
     }
