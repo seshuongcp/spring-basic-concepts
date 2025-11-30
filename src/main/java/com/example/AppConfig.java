@@ -68,4 +68,27 @@ public class AppConfig {
     public CheckoutService getCheckOutService(@Qualifier("getCreateCardPaymentService") PaymentService paymentService) {
         return new CheckoutService(paymentService);
     }
+
+    @Bean
+    public LifecycleService lifecycleService() {
+        return new LifecycleService();
+    }
+
+    @Bean
+    public ReportService reportService() {
+        return new ReportService();
+    }
+
+    @Bean
+    @Scope("prototype")
+    public TaskService taskService() {
+        return new TaskService();
+    }
+
+    @Bean
+    public WorkflowService workflowService(TaskService taskService) {
+        return new WorkflowService(taskService);
+    }
+
+
 }
